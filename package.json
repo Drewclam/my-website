@@ -1,0 +1,33 @@
+{
+  "name": "my-website",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open",
+    "build": "webpack",
+    "build:watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drewclam/my-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Drewclam/my-website/issues"
+  },
+  "homepage": "https://github.com/Drewclam/my-website#readme",
+  "devDependencies": {
+    "css-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "private": true,
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}

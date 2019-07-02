@@ -1,17 +1,14 @@
 import _ from 'lodash';
 import print from './print';
+import ReactDOM from 'react-dom';
+import React from 'react';
 
 import './index.css';
 
-function component() {
-  const element = document.createElement('div');
+const App = () => (
+  <div>
+    <h1>Hello World</h1>
+  </div>
+);
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('test');
-
-  print();
-
-  return element;
-}
-
-document.body.appendChild(component());
+ReactDOM.render(App(), document.getElementById('root'));

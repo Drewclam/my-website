@@ -4,8 +4,12 @@ jobs:
     docker:
       - image: circleci/node:7.10
     steps:
-      - checkout
-      - run: echo "Hello world!"
+      - run:
+          name: Install webpack command
+          command: sudo npm install webpack-command
+      - run:
+          name: Bundle
+          command: webpack --config webpack.config.js
   deploy:
     docker:
       - image: circleci/python:3.7-stretch
@@ -16,17 +20,17 @@ jobs:
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync ~/my-website/dist s3://drewclam.com --delete
+          command: aws s3 sync dist s3://drewclam.com --delete
 
 workflows:
   version: 2
   build-deploy:
     jobs:
-      # - build
+      - build
       - deploy:
           context: aws-cli
-          # requires:
-          #   - build
+          requires:
+            - build
           filters:
             branches:
               only: master

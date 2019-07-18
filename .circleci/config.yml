@@ -9,23 +9,24 @@ jobs:
   deploy:
     docker:
       - image: circleci/python:3.7-stretch
-    working_directory: ~/circleci-docs
+    working_directory: ~/my-website
     steps:
       - run:
           name: Install awscli
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync jekyll/_site/docs s3://circle-production-static-site/docs/ --delete
+          command: aws s3 sync ~/my-website/dist s3://drewclam.com --delete
 
 workflows:
   version: 2
   build-deploy:
     jobs:
-      - build
+      # - build
       - deploy:
-          requires:
-            - build
+          context: aws-cli
+          # requires:
+          #   - build
           filters:
             branches:
               only: master

@@ -21,13 +21,13 @@ jobs:
       - image: circleci/python:3.7-stretch
     steps:
       - attach_workspace:
-          at: dist
+          at: ./
       - run:
           name: Install awscli
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync dist s3://drewclam.com --delete
+          command: aws s3 sync dist/* s3://drewclam.com --delete
 
 workflows:
   version: 2

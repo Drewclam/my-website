@@ -8,7 +8,9 @@ jobs:
       - run:
           name: Install dependencies
           command: sudo npm install
-          # testing
+      - run:
+          name: Test
+          command: npm run test
       - run:
           name: Bundle
           command: npm run build:ci

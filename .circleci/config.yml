@@ -8,18 +8,20 @@ jobs:
       - run:
           name: Install dependencies
           command: sudo npm install
-      # - run:
-      #     name: Install webpack command
-      #     command: sudo npm install webpack-command
+          # testing
       - run:
           name: Bundle
-          # command: webpack --config webpack.config.js
           command: npm run build:ci
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - dist
   deploy:
     docker:
       - image: circleci/python:3.7-stretch
-    working_directory: ~/my-website
     steps:
+      - attach_workspace:
+          at: dist
       - run:
           name: Install awscli
           command: sudo pip install awscli
@@ -39,3 +41,6 @@ workflows:
           filters:
             branches:
               only: master
+# dockerize, cloudfront
+# subdomain points to ec2
+# replacing s3 with ec2

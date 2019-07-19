@@ -13,7 +13,8 @@ jobs:
       #     command: sudo npm install webpack-command
       - run:
           name: Bundle
-          command: webpack --config webpack.config.js
+          # command: webpack --config webpack.config.js
+          command: npm run build:ci
   deploy:
     docker:
       - image: circleci/python:3.7-stretch

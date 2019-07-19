@@ -6,8 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install webpack command
-          command: sudo npm install webpack-command
+          name: Install dependencies
+          command: sudo npm install
+      # - run:
+      #     name: Install webpack command
+      #     command: sudo npm install webpack-command
       - run:
           name: Bundle
           command: webpack --config webpack.config.js

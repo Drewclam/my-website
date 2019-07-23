@@ -31,12 +31,18 @@ jobs:
     steps:
       - attach_workspace:
           at: ./
+      - add_ssh_keys:
+          fingerprints:
+            - "a5:f2:40:03:79:a5:6f:78:66:6c:6f:ae:f6:65:9f:17"
       - run:
-          name: Install awscli
-          command: sudo pip install awscli
-      - run:
-          name: Deploy to S3
-          command: aws s3 sync dist s3://drewclam.com --delete
+          name: Copy to EC2
+          command: scp -i -r ../dist ec2-user@ec2-35-183-4-48.ca-central-1.compute.amazonaws.com:project
+      # - run:
+      #     name: Install awscli
+      #     command: sudo pip install awscli
+      # - run:
+      #     name: Deploy to S3
+      #     command: aws s3 sync dist s3://drewclam.com --delete
 
 workflows:
   version: 2
@@ -51,5 +57,3 @@ workflows:
             branches:
               only: master
 # dockerize, cloudfront
-# subdomain points to ec2
-# replacing s3 with ec2

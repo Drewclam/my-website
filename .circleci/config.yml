@@ -35,9 +35,6 @@ jobs:
           fingerprints:
             - "a5:f2:40:03:79:a5:6f:78:66:6c:6f:ae:f6:65:9f:17"
       - run:
-          name: fix host authenticity for production server
-          command: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-      - run:
           name: Copy to EC2
           command: scp -r ../dist ec2-user@ec2-35-183-4-48.ca-central-1.compute.amazonaws.com:project
       # - run:

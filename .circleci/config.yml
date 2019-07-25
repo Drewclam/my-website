@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Copy to EC2
           command: echo '<hostname> <type> <key>' >> ~/.ssh/known_hosts
-            scp -oStrictHostKeyChecking=no -r ../dist ec2-user@ec2-35-183-4-48.ca-central-1.compute.amazonaws.com:project
+            scp -oStrictHostKeyChecking=no -r ./project/dist ec2-user@ec2-35-183-4-48.ca-central-1.compute.amazonaws.com:~/
 
 workflows:
   version: 2

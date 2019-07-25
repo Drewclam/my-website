@@ -35,9 +35,11 @@ jobs:
           fingerprints:
             - "a5:f2:40:03:79:a5:6f:78:66:6c:6f:ae:f6:65:9f:17"
       - run:
-          name: Copy to EC2
+          name: Write SSH
           command: echo '<hostname> <type> <key>' >> ~/.ssh/known_hosts
-            scp -oStrictHostKeyChecking=no -r ./project/dist ec2-user@ec2-35-183-4-48.ca-central-1.compute.amazonaws.com:~/
+      - run:
+          name: SCP to EC2
+          command: scp -oStrictHostKeyChecking=no -r ~/project/dist ec2-user@ec2-35-183-4-48.ca-central-1.compute.amazonaws.com:~/
 
 workflows:
   version: 2
